@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import MyListScreen from './../screens/myList/MyListScreen';
-import SearchCityScreen from '../screens/SearchCityScreen';
+import CityScreen from '../screens/myList/CityScreen';
+import MyListScreen from '../screens/myList/MyListScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +18,7 @@ const MyListStack = () => {
         />
       <Stack.Screen
         name="CityScreen"
-        component={SearchCityScreen}
+        component={CityScreen}
         options={{
           title: 'El clima en mi Ciudad'
         }}
