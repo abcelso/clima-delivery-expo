@@ -9,8 +9,20 @@ const Stack = createStackNavigator();
 const MyListStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MyListScreen" component={MyListScreen} />
-      <Stack.Screen name="CityScreen" component={SearchCityScreen} />
+      <Stack.Screen
+        name="MyListScreen"
+        component={MyListScreen}
+        options={{
+          title: 'Mis Ciudades'
+        }}
+        />
+      <Stack.Screen
+        name="CityScreen"
+        component={SearchCityScreen}
+        options={{
+          title: 'El clima en mi Ciudad'
+        }}
+        />
     </Stack.Navigator>
   );
 };
