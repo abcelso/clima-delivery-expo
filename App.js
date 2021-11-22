@@ -6,6 +6,10 @@ import Navigation from './navigations/Navigation';
 import { fuego } from './firebase/firebaseConf';
 
 export default function App() {
+
+	// Deshabilita todo warning que aparece
+	console.disableYellowBox = true;
+
 	return (
     <FuegoProvider fuego={fuego}>
 		<NativeBaseProvider>
