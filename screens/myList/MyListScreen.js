@@ -4,24 +4,34 @@ import {useNavigation} from '@react-navigation/native';
 import Search from '../../components/Search';
 import {VStack} from 'native-base';
 import ListCities from '../../components/ListCities';
+import { useCollection } from 'swr-firestore-v9';
 
-const cities = [
-  {
-    id: 1,
-    city: 'La Rioja',
-    lat: -29.413454,
-    lon: -66.856458
-  },
-  {
-    id: 2,
-    city: 'San Miguel de Tucumán',
-    lat: -26.808285,
-    lon: -65.217590
-  }
-];
+// const cities = [
+//   {
+//     id: 1,
+//     city: 'La Rioja',
+//     lat: -29.413454,
+//     lon: -66.856458
+//   },
+//   {
+//     id: 2,
+//     city: 'San Miguel de Tucumán',
+//     lat: -26.808285,
+//     lon: -65.217590
+//   }
+// ];
+
 
 const MyListScreen = () => {
   const navigation = useNavigation();
+
+  const cities = useCollection('city', {
+    shouldRetryOnError: false,
+    onSuccess: console.log,
+    loadingTimeout: 2000,
+                listen: true
+  })
+  .data;
 
   const [miSearch, setMiSearch] = useState('');
 
@@ -30,7 +40,7 @@ const MyListScreen = () => {
   }, [miSearch]);
 
   return (
-      <VStack>
+      <VStack bg='#91cacc' h='100%'>
         <Search value={setMiSearch}/>
         <ListCities cities={cities}/>
       </VStack>
