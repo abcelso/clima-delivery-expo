@@ -11,10 +11,11 @@ import {
 	Spacer,
 	Button,
 	Pressable,
-  IconButton,
-  Icon,
+	IconButton,
+	Icon,
+	ScrollView,
 } from 'native-base';
-import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ListCities = ({ cities }) => {
 	const navigation = useNavigation();
@@ -30,18 +31,19 @@ const ListCities = ({ cities }) => {
 			}>
 			<Box
 				borderBottomWidth='1'
-        bg='amber.100'
-        rounded='xl'
+				bg='amber.100'
+				rounded='xl'
+				overflow="hidden"
 				_dark={{
 					borderColor: 'gray.600',
 				}}
 				borderColor='coolGray.300'
 				mt='5'
-        mx='5'
+				mx='5'
 				pl='4'
 				pr='5'
 				py='5'>
-				<HStack space={5} justifyContent='space-between'>
+				<HStack space={5} justifyContent='space-evenly'>
 					<Avatar
 						size='48px'
 						bg='gray.300'
@@ -51,15 +53,21 @@ const ListCities = ({ cities }) => {
 					/>
 					<VStack>
 						<Text
+							isTruncated
+							maxW="300"
+							w="100%"
 							_dark={{
 								color: 'warmGray.50',
 							}}
 							color='coolGray.800'
-              fontSize='lg'
+							fontSize='md'
 							bold>
-							{(item.name).toUpperCase()}
+							{item.name.toUpperCase()}
 						</Text>
 						<Text
+							isTruncated
+							maxW="300"
+							w="100%"
 							color='coolGray.600'
 							_dark={{
 								color: 'warmGray.200',
@@ -72,7 +80,12 @@ const ListCities = ({ cities }) => {
             Delete
           </Button> */}
 					<IconButton
-						icon={<Icon as={MaterialCommunityIcons} name='close-circle-outline' />}
+						icon={
+							<Icon
+								as={MaterialCommunityIcons}
+								name='close-circle-outline'
+							/>
+						}
 						borderRadius='full'
 						_icon={{
 							color: 'red.500',

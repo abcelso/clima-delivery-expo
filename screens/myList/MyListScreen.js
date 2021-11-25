@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Search from '../../components/Search';
-import {VStack} from 'native-base';
+import {ScrollView, VStack} from 'native-base';
 import ListCities from '../../components/ListCities';
 import { useCollection } from 'swr-firestore-v9';
 
@@ -40,10 +40,12 @@ const MyListScreen = () => {
   }, [miSearch]);
 
   return (
+    <ScrollView>
       <VStack bg='#91cacc' h='100%'>
         <Search value={setMiSearch}/>
         <ListCities cities={cities}/>
       </VStack>
+    </ScrollView>
   );
 };
 

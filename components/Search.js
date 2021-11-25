@@ -1,21 +1,54 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button, Center, Input, Stack, Icon, SearchIcon} from 'native-base';
+import {Button, Center, Input, Stack, Icon, SearchIcon, IconButton} from 'native-base';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {globalStyles} from '../styles/globalStyles';
 
 const Search = ({value}) => {
-  const [search, setSearch] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
-  const handleChange = event => {
-    setSearch(event.nativeEvent.text);
+  const handleInputSearch = event => {
+    setSearchValue(event.nativeEvent.text);
     // console.log(event.nativeEvent.text);
-    value(search);
+    value(searchValue);
+  };
+
+  const handleSearch = () => {
+    setSearchValue('');
   };
 
   return (
-    <Stack>
+    <Stack mt='5'>
       <Center>
-        <View style={styles.container}>
+      <Text fontSize='sm'>Ciudad</Text>
+					<Input
+						value={searchValue}
+						onChange={handleInputSearch}
+						mx={3}
+						placeholder='Buscar'
+
+						w={{
+							base: '75%',
+							md: '25%',
+						}}
+						InputRightElement={
+							<IconButton
+						icon={
+							<Icon
+								as={MaterialCommunityIcons}
+								name='close'
+							/>
+						}
+						borderRadius='full'
+						_icon={{
+							color: 'black',
+							size: 'md',
+						}}
+            onPress={handleSearch}
+					/>
+						}
+					/>
+        {/* <View style={styles.container}>
           <Text style={globalStyles.label}>Buscar Ciudad</Text>
           <Input
             placeholder="Nombre ciudad"
@@ -28,7 +61,7 @@ const Search = ({value}) => {
             onChange={handleChange}
             InputLeftElement={<SearchIcon size="4" />}
           />
-        </View>
+        </View> */}
       </Center>
     </Stack>
   );
