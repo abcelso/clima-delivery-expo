@@ -104,7 +104,7 @@ const SearchCityScreen = () => {
 					/>
 			</Center>
 			<View>
-				<Map location={location} />
+				<Map location={location} height={400} />
 				<Button onPress={handleSave}>Guardar Ubicación</Button>
 			</View>
 		</VStack>

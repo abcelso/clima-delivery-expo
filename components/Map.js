@@ -23,7 +23,7 @@ const camera = {
   zoom: 15,
 };
 
-const Map = ({location}) => {
+const Map = ({location, height}) => {
   const [region, setRegion] = useState(initialRegion);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Map = ({location}) => {
     // <View style={styles.page}>
     <View style={styles.container}>
       <MapView
-        style={styles.map}
+        style={[styles.map, {height: height}]}
         region={region}
         zoomEnabled={true}
         camera={camera}>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   // },
   container: {
     // flex: 1,
-    marginTop: 10,
+    marginTop: 1,
     backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
     // width: Dimensions.get('window').width,
     // height: Dimensions.get('window').height,
     width: '100%',
-    height: 400,
   },
 });
+
