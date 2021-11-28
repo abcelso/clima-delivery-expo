@@ -73,6 +73,7 @@ const HomeTabBottom = () => {
         name="AboutScreen"
         component={AboutScreen}
         options={{
+          headerShown: false,
           title: 'Acerca de...'
         }}
         />
