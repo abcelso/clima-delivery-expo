@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Keyboard, StyleSheet, View } from 'react-native';
 import {
 	Input,
 	VStack,
 	Text,
 	Button,
 	Center,
+	Box,
+	KeyboardAvoidingView,
 } from 'native-base';
 import { useCollection } from 'swr-firestore-v9';
 import Map from '../components/Map';
@@ -49,13 +51,16 @@ const SearchCityScreen = () => {
 			console.log(error);
 			return;
 		}
+
+		Keyboard.dismiss();
 		// console.log(mlocation);
 	};
 
 	const handleSave = () => {
 		add({
-			name: searchValue,
+			name: searchValue.toUpperCase(),
 			description: descripValue,
+			exist: true,
 			latitude: location.lat,
 			longitude: location.lng,
 		});
@@ -65,11 +70,17 @@ const SearchCityScreen = () => {
 		} else {
 			console.log('Error al guardar');
 		}
+
+		setSearchValue('');
+		setDescripValue('');
+
+		Keyboard.dismiss();
 	};
 
 	return (
-		<VStack>
-			<Center style={{ width: '100%' }}>
+		<KeyboardAvoidingView>
+			<VStack mt='5'>
+				<Center style={{ width: '100%' }}>
 					<Text fontSize='sm'>Ciudad</Text>
 					<Input
 						value={searchValue}
@@ -87,11 +98,13 @@ const SearchCityScreen = () => {
 								w='1/6'
 								h='full'
 								onPress={handleSearch}>
-								Search
+								Buscar
 							</Button>
 						}
 					/>
- 					<Text fontSize='sm'>Descripción</Text>
+					<Text fontSize='sm' mt='5'>
+						Descripción
+					</Text>
 					<Input
 						value={descripValue}
 						onChange={handleInputDescrip}
@@ -102,12 +115,25 @@ const SearchCityScreen = () => {
 							md: '25%',
 						}}
 					/>
-			</Center>
-			<View>
-				<Map location={location} height={400} />
-				<Button onPress={handleSave}>Guardar Ubicación</Button>
-			</View>
-		</VStack>
+				</Center>
+				<View>
+					<Box mx='5' mt='5' borderColor='black' borderWidth='1'>
+						<Map location={location} height={400} />
+					</Box>
+					<Button
+						mt='5'
+						mx='5'
+						py='2'
+						_text={{
+							fontSize: '16',
+							fontWeight: 'bold',
+						}}
+						onPress={handleSave}>
+						Guardar Ubicación
+					</Button>
+				</View>
+			</VStack>
+		</KeyboardAvoidingView>
 	);
 };
 

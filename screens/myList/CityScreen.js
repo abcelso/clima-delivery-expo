@@ -17,25 +17,23 @@ const CityScreen = () => {
 		weatherCity(lat, lng).then((data) => setWeather(data));
 	}, []);
 
-	const { temp, temp_max, temp_min, bg_temp, icon_weather} = weather;
+	const { temp, temp_max, temp_min, bg_temp, icon_weather } = weather;
 
 	return (
-		<View style={[styles.container, {backgroundColor: bg_temp}]}>
-      <Center>
-        <Text style={styles.city}>
-          {city.toUpperCase()}
-        </Text>
+		<View style={[styles.container, { backgroundColor: bg_temp }]}>
+			<Center>
+				<Text style={styles.city}>{city.toUpperCase()}</Text>
 				<Image
 					style={{ width: 150, height: 100 }}
 					source={{
-            uri: `https://openweathermap.org/img/w/${icon_weather}.png`,
+						uri: `https://openweathermap.org/img/w/${icon_weather}.png`,
 					}}
-          />
-			<Text style={styles.centig}>
-				{temp}
-				<Text style={styles.simbol}>ºC</Text>
-			</Text>
-      </Center>
+				/>
+				<Text style={styles.centig}>
+					{temp}
+					<Text style={styles.simbol}>ºC</Text>
+				</Text>
+			</Center>
 			<View style={styles.temp}>
 				<Text style={styles.items_temp}>
 					Máxima:{' '}
@@ -50,11 +48,7 @@ const CityScreen = () => {
 					</Text>
 				</Text>
 			</View>
-			<Box
-        mx='5'
-          mt='10'
-        borderColor='black'
-        borderWidth='1'>
+			<Box mx='5' mt='10' borderColor='black' borderWidth='1'>
 				<Map location={route.params} height={200} />
 			</Box>
 		</View>
@@ -65,10 +59,9 @@ export default CityScreen;
 
 const styles = StyleSheet.create({
 	container: {
-    flex:1,
-    justifyContent: 'center',
+		flex: 1,
+		justifyContent: 'center',
 		marginBottom: 10,
-
 	},
 	centig: {
 		fontSize: 80,
@@ -93,9 +86,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-evenly',
 		textAlign: 'center',
 	},
-  city: {
-    color: '#fff',
-    fontSize: 30,
-    marginBottom: 15
-  }
+	city: {
+		color: '#fff',
+		fontSize: 30,
+		marginBottom: 15,
+	},
 });
