@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Keyboard, StyleSheet, Text, View} from 'react-native';
 import {Button, Center, Input, Stack, Icon, SearchIcon, IconButton} from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {globalStyles} from '../styles/globalStyles';
@@ -15,6 +15,8 @@ const Search = ({value}) => {
 
   const handleSearch = () => {
     value(searchValue);
+    Keyboard.dismiss()
+    setSearchValue('');
   };
 
   return (
