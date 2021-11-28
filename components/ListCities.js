@@ -16,9 +16,14 @@ import {
 	ScrollView,
 } from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { updateDoc } from 'swr-firestore-v9';
 
 const ListCities = ({ cities }) => {
 	const navigation = useNavigation();
+
+	const handleDelete = id => {
+		updateDoc(`city/${id}`, {exist: false});
+	}
 
 	const showList = ({ item }) => (
 		<Pressable
@@ -38,7 +43,7 @@ const ListCities = ({ cities }) => {
 					borderColor: 'gray.600',
 				}}
 				borderColor='coolGray.300'
-				mt='5'
+				mt='2'
 				mx='5'
 				pl='4'
 				pr='5'
@@ -62,7 +67,7 @@ const ListCities = ({ cities }) => {
 							color='coolGray.800'
 							fontSize='md'
 							bold>
-							{item.name.toUpperCase()}
+							{item.name}
 						</Text>
 						<Text
 							isTruncated
@@ -91,19 +96,20 @@ const ListCities = ({ cities }) => {
 							color: 'red.500',
 							size: 'md',
 						}}
+						onPress={ () => handleDelete(item.id)}
 					/>
 				</HStack>
 			</Box>
 		</Pressable>
 	);
 	return (
-		<View>
+		<ScrollView style={styles.scroll}>
 			<FlatList
 				data={cities}
 				renderItem={showList}
 				keyExtractor={(item) => item.id}
 			/>
-		</View>
+		</ScrollView>
 	);
 };
 
@@ -113,4 +119,7 @@ const styles = StyleSheet.create({
 	txt: {
 		color: '#000',
 	},
+	scroll: {
+		marginTop: 10
+	}
 });

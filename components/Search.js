@@ -10,11 +10,11 @@ const Search = ({value}) => {
   const handleInputSearch = event => {
     setSearchValue(event.nativeEvent.text);
     // console.log(event.nativeEvent.text);
-    value(searchValue);
+    // value(searchValue);
   };
 
   const handleSearch = () => {
-    setSearchValue('');
+    value(searchValue);
   };
 
   return (
@@ -32,20 +32,28 @@ const Search = ({value}) => {
 							md: '25%',
 						}}
 						InputRightElement={
-							<IconButton
-						icon={
-							<Icon
-								as={MaterialCommunityIcons}
-								name='close'
-							/>
-						}
-						borderRadius='full'
-						_icon={{
-							color: 'black',
-							size: 'md',
-						}}
-            onPress={handleSearch}
-					/>
+					// 		<IconButton
+					// 	icon={
+					// 		<Icon
+					// 			as={MaterialCommunityIcons}
+					// 			name='close'
+					// 		/>
+					// 	}
+					// 	borderRadius='full'
+					// 	_icon={{
+					// 		color: 'black',
+					// 		size: 'md',
+					// 	}}
+          //   onPress={handleSearch}
+					// />
+            <Button
+								size='xs'
+								rounded='none'
+								w='1/6'
+								h='full'
+								onPress={handleSearch}>
+								Search
+							</Button>
 						}
 					/>
         {/* <View style={styles.container}>

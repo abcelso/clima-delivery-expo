@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Search from '../../components/Search';
-import {ScrollView, VStack} from 'native-base';
+import {ScrollView, VStack, Center} from 'native-base';
 import ListCities from '../../components/ListCities';
 import { useCollection } from 'swr-firestore-v9';
 
@@ -23,33 +23,39 @@ import { useCollection } from 'swr-firestore-v9';
 
 
 const MyListScreen = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
+  const [miSearch, setMiSearch] = useState('');
+
+  // console.log(miSearch);
 
   const cities = useCollection('city', {
     shouldRetryOnError: false,
     onSuccess: console.log,
     loadingTimeout: 2000,
-                listen: true
+    listen: true
   })
   .data;
 
-  const [miSearch, setMiSearch] = useState('');
+  let citiesFilter = '';
 
-  useEffect(() => {
-    console.log(miSearch);
-  }, [miSearch]);
+  if (miSearch) {
+    citiesFilter = cities.filter( values => values.name.includes(miSearch.toUpperCase()))
+    .filter( item => item.exist === true);
+  }
+  // console.log(citiesFilter);
 
   return (
-    <ScrollView>
+    <View>
       <VStack bg='#91cacc' h='100%'>
         <Search value={setMiSearch}/>
-        <ListCities cities={cities}/>
+        <ListCities cities={citiesFilter}/>
       </VStack>
-    </ScrollView>
+    </View>
   );
 };
 
 export default MyListScreen;
+
 
 const styles = StyleSheet.create({
   title: {
