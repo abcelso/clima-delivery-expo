@@ -51,7 +51,7 @@ const HomeTabBottom = () => {
         name="HomeScreen"
         component={HomeScreen}
         options={{
-          title: 'Home'
+          headerShown: false,
         }}
         />
       <Tab.Screen
