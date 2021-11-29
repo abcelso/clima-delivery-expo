@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {Keyboard, StyleSheet, Text, View} from 'react-native';
-import {Button, Center, Input, Stack, Icon, SearchIcon, IconButton} from 'native-base';
+import {Keyboard} from 'react-native';
+import {Button, Center, Input, Stack, Text} from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {globalStyles} from '../styles/globalStyles';
 
 const Search = ({value}) => {
   const [searchValue, setSearchValue] = useState('');
@@ -22,13 +21,14 @@ const Search = ({value}) => {
   return (
     <Stack mt='5'>
       <Center>
-      <Text fontSize='sm'>Ciudad</Text>
+      <Text fontSize='lg' color='#000'>Ciudad a Buscar</Text>
 					<Input
 						value={searchValue}
 						onChange={handleInputSearch}
 						mx={3}
 						placeholder='Buscar'
-
+            fontSize='16'
+            color='#000'
 						w={{
 							base: '75%',
 							md: '25%',
@@ -54,24 +54,10 @@ const Search = ({value}) => {
 								w='1/6'
 								h='full'
 								onPress={handleSearch}>
-								Search
+								Buscar
 							</Button>
 						}
 					/>
-        {/* <View style={styles.container}>
-          <Text style={globalStyles.label}>Buscar Ciudad</Text>
-          <Input
-            placeholder="Nombre ciudad"
-            mx-3
-            width="80%"
-            fontsize="14"
-            borderColor="#000"
-            variant="rounded"
-            value={search}
-            onChange={handleChange}
-            InputLeftElement={<SearchIcon size="4" />}
-          />
-        </View> */}
       </Center>
     </Stack>
   );
@@ -79,9 +65,3 @@ const Search = ({value}) => {
 
 export default Search;
 
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 10,
-    marginTop: 10
-  },
-});

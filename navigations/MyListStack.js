@@ -13,6 +13,7 @@ const MyListStack = () => {
         name="MyListScreen"
         component={MyListScreen}
         options={{
+          headerShown: false,
           title: 'Mis Ciudades'
         }}
         />

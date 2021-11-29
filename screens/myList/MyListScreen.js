@@ -5,6 +5,7 @@ import Search from '../../components/Search';
 import {ScrollView, VStack, Center} from 'native-base';
 import ListCities from '../../components/ListCities';
 import { useCollection } from 'swr-firestore-v9';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // const cities = [
 //   {
@@ -46,7 +47,14 @@ const MyListScreen = () => {
 
   return (
     <View>
-      <VStack bg='#91cacc' h='100%'>
+      <LinearGradient
+				colors={['rgba(0,0,0,0.8)', 'transparent']}
+				style={styles.background}
+			/>
+      <VStack
+        // bg='#91cacc'
+        mt='20'
+        h='100%'>
         <Search value={setMiSearch}/>
         <ListCities cities={citiesFilter}/>
       </VStack>
@@ -62,4 +70,11 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#000',
   },
+  background: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		height: 600,
+	},
 });
