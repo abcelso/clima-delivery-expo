@@ -12,6 +12,7 @@ import {
 import { useCollection } from 'swr-firestore-v9';
 import Map from '../components/Map';
 import { searchCity } from '../helpers/searchCity';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const initialLocation = {
 	id: 1,
@@ -79,14 +80,24 @@ const SearchCityScreen = () => {
 
 	return (
 		<KeyboardAvoidingView>
-			<VStack mt='5'>
+			<LinearGradient
+				colors={['rgba(0,0,0,0.8)', 'transparent']}
+				style={styles.background}
+			/>
+			<VStack>
 				<Center style={{ width: '100%' }}>
-					<Text fontSize='sm'>Ciudad</Text>
+					<Text
+						mt='20'
+						fontSize='lg'
+						color='#000'
+						>Ciudad</Text>
 					<Input
 						value={searchValue}
 						onChange={handleInputSearch}
 						mx={3}
 						placeholder='Buscar'
+						fontSize='16'
+						color='#000'
 						w={{
 							base: '75%',
 							md: '25%',
@@ -102,7 +113,7 @@ const SearchCityScreen = () => {
 							</Button>
 						}
 					/>
-					<Text fontSize='sm' mt='5'>
+					<Text fontSize='lg' color='#000' mt='5'>
 						Descripción
 					</Text>
 					<Input
@@ -110,6 +121,8 @@ const SearchCityScreen = () => {
 						onChange={handleInputDescrip}
 						mx={3}
 						placeholder='Descripción'
+						fontSize='16'
+						color='#000'
 						w={{
 							base: '75%',
 							md: '25%',
@@ -142,5 +155,12 @@ export default SearchCityScreen;
 const styles = StyleSheet.create({
 	btn: {
 		flex: 1,
+	},
+	background: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		height: 600,
 	},
 });

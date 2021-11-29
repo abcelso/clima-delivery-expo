@@ -21,8 +21,11 @@ const MyListStack = () => {
         name="CityScreen"
         component={CityScreen}
         options={{
-          title: 'El clima en mi Ciudad'
-        }}
+          title: 'Clima en mi Ciudad',
+          headerStyle: {
+            textAlign: 'center',
+          }
+                }}
         />
     </Stack.Navigator>
   );

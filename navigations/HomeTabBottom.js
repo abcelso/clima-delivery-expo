@@ -66,6 +66,7 @@ const HomeTabBottom = () => {
         name="SearchScreen"
         component={SearchCityScreen}
         options={{
+          headerShown: false,
           title: 'Buscar Ciudad'
         }}
         />
