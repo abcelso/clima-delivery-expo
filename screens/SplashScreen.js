@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import AnimatedLottieView from 'lottie-react-native';
 import { Center, Text, VStack } from 'native-base';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
 const SplashScreen = () => {

@@ -27,6 +27,7 @@ const SearchCityScreen = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const [descripValue, setDescripValue] = useState('');
 
+	// Obtiene todos los documentos de la colección city desde firestore
 	const { data, add, error } = useCollection('city', {
 		shouldRetryOnError: true,
 		onSuccess: console.log,
@@ -34,16 +35,19 @@ const SearchCityScreen = () => {
 		listen: true,
 	});
 
-	console.log(data);
+	// console.log(data);
 
+	// Maneja los cambio en el componente input de buscar ciudad
 	const handleInputSearch = (e) => {
 		setSearchValue(e.nativeEvent.text);
 	};
 
+	// Maneja los cambio en el componente input de descripción de la ciudad
 	const handleInputDescrip = (e) => {
 		setDescripValue(e.nativeEvent.text);
 	};
 
+	// Se dispara cuando presiono el botón buscar
 	const handleSearch = async () => {
 		try {
 			let mlocation = await searchCity(searchValue);
@@ -57,7 +61,10 @@ const SearchCityScreen = () => {
 		// console.log(mlocation);
 	};
 
+	// Se dispara cuando presiono el botón grabar una ciudad
 	const handleSave = () => {
+
+		// Agrega en la base de datos de firestore la ciudad buscada
 		add({
 			name: searchValue.toUpperCase(),
 			description: descripValue,

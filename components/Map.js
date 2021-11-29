@@ -1,4 +1,3 @@
-import {Box} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
@@ -24,8 +23,11 @@ const camera = {
 };
 
 const Map = ({location, height}) => {
+
+  // Hook para inicializar una región
   const [region, setRegion] = useState(initialRegion);
 
+  // Hook que se dispara cuando localización cambia
   useEffect(() => {
     setRegion(
       {
@@ -37,10 +39,7 @@ const Map = ({location, height}) => {
     );
   }, [location]);
 
-  // console.log(location);
   return (
-    // <Box borderColor="gray.200" borderWidth="1" p="32" mx="5" bg="red.300">
-    // <View style={styles.page}>
     <View style={styles.container}>
       <MapView
         style={[styles.map, {height: height}]}
@@ -59,30 +58,17 @@ const Map = ({location, height}) => {
         </Marker>
       </MapView>
     </View>
-    // </View>
-    // </Box>
   );
 };
 
 export default Map;
 
 const styles = StyleSheet.create({
-  // page: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#F5FCFF',
-  // },
   container: {
-    // flex: 1,
     marginTop: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   map: {
-    // width: Dimensions.get('window').width,
-    // height: Dimensions.get('window').height,
     width: '100%',
   },
 });

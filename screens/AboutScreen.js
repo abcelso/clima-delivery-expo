@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+// Crea la lista de integrantes
 function displayMembers() {
 	return integrantes.map((integrante) => (
 		<VStack key={integrante.id} mt='5'>

@@ -1,16 +1,16 @@
 import { useRoute } from '@react-navigation/native';
-import { Box, Center, HStack } from 'native-base';
+import { Box, Center } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Map from '../../components/Map';
 import { weatherCity } from '../../helpers/weather';
-import { globalStyles } from '../../styles/globalStyles';
 
 const CityScreen = () => {
 	const route = useRoute();
 
 	const [weather, setWeather] = useState({});
 
+	// Obtengo los parametros desde la ruta
 	const { city, lat, lng } = route.params;
 
 	useEffect(() => {

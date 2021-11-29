@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
 	Avatar,
@@ -9,7 +9,6 @@ import {
 	VStack,
 	Text,
 	Spacer,
-	Button,
 	Pressable,
 	IconButton,
 	Icon,
@@ -19,12 +18,15 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { updateDoc } from 'swr-firestore-v9';
 
 const ListCities = ({ cities }) => {
+	
 	const navigation = useNavigation();
 
+	// Realiza la acción de borrar ciudad en firestore
 	const handleDelete = id => {
 		updateDoc(`city/${id}`, {exist: false});
 	}
 
+	// Genera la lista de ciudades a partir del arreglo cities que viene como props
 	const showList = ({ item }) => (
 		<Pressable
 			onPress={() =>
@@ -81,9 +83,6 @@ const ListCities = ({ cities }) => {
 						</Text>
 					</VStack>
 					<Spacer />
-					{/* <Button size="12" colorScheme="danger" variant="outline">
-            Delete
-          </Button> */}
 					<IconButton
 						icon={
 							<Icon

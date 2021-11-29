@@ -1,6 +1,6 @@
 import { NativeBaseProvider } from 'native-base';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { FuegoProvider } from 'swr-firestore-v9';
 import Navigation from './navigations/Navigation';
 import { fuego } from './firebase/firebaseConf';

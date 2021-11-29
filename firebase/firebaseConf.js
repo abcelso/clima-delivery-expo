@@ -2,6 +2,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import {Fuego} from 'swr-firestore-v9';
 
+// Configuración para poder conectarme a firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyCGVVgRQCqTgLBegMoJMYXnYHexw8s1xP4',
   authDomain: 'clima-delivery-app.firebaseapp.com',

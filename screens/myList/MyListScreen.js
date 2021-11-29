@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import {StyleSheet, View} from 'react-native';
 import Search from '../../components/Search';
-import {ScrollView, VStack, Center} from 'native-base';
+import {VStack} from 'native-base';
 import ListCities from '../../components/ListCities';
 import { useCollection } from 'swr-firestore-v9';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -24,11 +23,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 const MyListScreen = () => {
-  // const navigation = useNavigation();
+
   const [miSearch, setMiSearch] = useState('');
 
-  // console.log(miSearch);
-
+  // Obtengo los documentos de la colección city desde firestore
   const cities = useCollection('city', {
     shouldRetryOnError: false,
     onSuccess: console.log,
@@ -39,6 +37,7 @@ const MyListScreen = () => {
 
   let citiesFilter = '';
 
+  // Si tengo algo en input filtro las ciudades que coinciden con el nombre y que existan
   if (miSearch) {
     citiesFilter = cities.filter( values => values.name.includes(miSearch.toUpperCase()))
     .filter( item => item.exist === true);
